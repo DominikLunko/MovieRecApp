@@ -20,7 +20,7 @@ const Movie = ( { movie, setCurrentId } ) =>{
         if(movie.likes.length > 0) {
             return movie.likes.find((like) => like ===(user?.result?._id))
             ? (
-                <><ThumbUpAltIcon fontSize = "small"/>&nbsp;{movie.likes.length > 2 ? `You and ${movie.likes.length -1} others`: `${movie.likes.length} like${movie.likes.length > 1 ? 's' : ''}`}</>
+                <><ThumbUpAltIcon fontSize = "small"/>&nbsp;{movie.likes.length == 1 ? `You liked movie`: movie.likes.length > 2 ? `You and ${movie.likes.length -1} others likes` : `You and ${movie.likes.length -1} others likes` }</>
             ) : (
                 <><ThumbUpAltOutlined fontSize="small"/>&nbsp;{movie.likes.length} {movie.likes.length === 1 ? 'Like' : 'Likes'}</>
             )
