@@ -10,11 +10,12 @@ import useStyles from './styles';
 const Movies = ({ setCurrentId }) =>{
     const movies = useSelector((state) => state.movies);
     const classes = useStyles();
+    const user = JSON.parse(localStorage.getItem('profile'));
 
     
 
     return(
-        !movies.length ? <CircularProgress /> : (
+        !movies?.length ? <CircularProgress /> :  (
             <Grid className={classes.container} container alignItems="stretch" spacing={3}>
                 {movies.map((movie) =>(
                     <Grid key={movie._id} item xs={12} sm={6}>
@@ -23,7 +24,7 @@ const Movies = ({ setCurrentId }) =>{
                 ))}
 
             </Grid>
-        )
+        ) 
         
     );
 }

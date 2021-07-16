@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { AppBar, Avatar, Button, Typography, Toolbar } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import useStyles from './styles';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import decode from 'jwt-decode';
 import { useHistory, useLocation } from 'react-router-dom';
 
@@ -17,11 +17,12 @@ const Navbar = ({isRec, setIsRec}) => {
     const classes = useStyles();
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const location = useLocation(); 
+    const userTok = useSelector((state) => state.auth.authData?.token);
     
 
     useEffect(() => {
         const token = user?.token;
-
+        console.log(userTok);
         if(token){
             const decodedToken = decode(token);
 
@@ -62,7 +63,9 @@ const Navbar = ({isRec, setIsRec}) => {
         <AppBar className={classes.appBar} position="static" color="inherit">
         <div className={classes.brandContainer}>
             {/* <Typography  variant="h2" align="center">Movies</Typography> */}
-            <img className={classes.image} src={logo} alt="movies" height="105"  component={Link} to="/" onClick={refreshPage} />
+            <img className={classes.image} src={logo} alt="movies" height="105"  component={Link} to="/" onClick={() => {
+                dispatch(getMovies())
+                setIsRec(false)}}/>
             {user?.result && (
                 <Button 
                 variant="contained"  

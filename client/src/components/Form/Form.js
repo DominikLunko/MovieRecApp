@@ -48,7 +48,7 @@ const Form = ({currentId, setCurrentId }) =>{
        )
     }
     
-    if(user?.result?.role === 'admin') {
+   //  if(user?.result?.role === 'admin') {
       return(
          <Paper className={classes.paper}>
              <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
@@ -109,15 +109,15 @@ const Form = ({currentId, setCurrentId }) =>{
              </form>
          </Paper>
      );
-    } else{
-      return (
-         <Paper className={classes.paper}>
-         <Typography variant="h6" align="center">
-            Feel free to like a movie, so we can make recommendation :)
-         </Typography>
-         </Paper>
-      );
-    }
+   //  } else{
+   //    return (
+   //       <Paper className={classes.paper}>
+   //       <Typography variant="h6" align="center">
+   //          Feel free to like a movie, so we can make recommendation :)
+   //       </Typography>
+   //       </Paper>
+   //    );
+   //  }
        
     
     

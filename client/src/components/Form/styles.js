@@ -10,6 +10,8 @@ export default makeStyles((theme) => ({
     padding: theme.spacing(2),
     flexWrap: 'wrap',
     marginBotttom: 10,
+    position: "sticky",
+    top: "50px"
     
     
 

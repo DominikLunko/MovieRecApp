@@ -73,14 +73,14 @@ export const addMovie = async (req, res) =>{
 }
 
 export const updateMovie = async ( req, res) => {
-    const { id: _id } = req.params;
+    const { id } = req.params;
 
     const movie = req.body;
 
-    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No movie with that ID');
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No movie with that ID');
 
     
-    const updatedMovie = await Movie.findByIdAndUpdate(_id, {...movie, _id }, {new: true});
+    const updatedMovie = await Movie.findByIdAndUpdate(id, movie, {new: true});
 
     res.json(updatedMovie);
 }
@@ -111,6 +111,15 @@ export const likeMovie = async ( req, res ) => {
     } else {
         movie.likes = movie.likes.filter((id) => id !== String(req.userId));
     }
+    // const idOfUser =movie.likes.find((id) => id===String(req.userId));
+
+    // if(!idOfUser){
+    //     movie.likes.push(req.userId);
+    // } else {
+    //     movie.likes = movie.likes.filter((id) => id !== String(req.userId));
+    // }
+
+
 
     const updatedMovie = await Movie.findByIdAndUpdate(id, movie, {new:true});
 

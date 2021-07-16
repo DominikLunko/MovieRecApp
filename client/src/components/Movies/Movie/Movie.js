@@ -37,7 +37,7 @@ const Movie = ( { movie, setCurrentId } ) =>{
                 <Typography variant="body1">{movie.movieYear}</Typography>
                 <Typography variant="body2">{moment(movie.createdAt).fromNow()}</Typography>
             </div>
-            {(user?.result?._id === movie?.creator && user?.result?.role === 'admin') &&(
+            {(user?.result?._id === movie?.creator) &&(
             <div className={classes.overlay2}>
                 <Button style ={{color: 'white'}} size="small" onClick={() => setCurrentId(movie._id)}>
                     <MoreHorizIcon fontSize="default" />
@@ -57,7 +57,7 @@ const Movie = ( { movie, setCurrentId } ) =>{
                     <Button size="small" color="primary" disabled={!user?.result} onClick={() => dispatch(likeMovie(movie._id))}>
                         <Likes />
                     </Button>
-                    {(user?.result?._id === movie?.creator && user?.result?.role === 'admin') &&(
+                    {(user?.result?._id === movie?.creator) &&(
                         <Button size="small" color="primary" onClick={() => dispatch(deleteMovie(movie._id))}>
                             <DeleteIcon fontSize="small"/>
                             Delete

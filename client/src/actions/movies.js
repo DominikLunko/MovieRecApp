@@ -99,10 +99,10 @@ export const likeMovie = (id) => async (dispatch) => {
 
 export const recommend = (id) => async (dispatch) => {
     try {
-        
+        dispatch({type:"REC", payload:null});
         const { data } = await api.recommend({ id });
 
-        dispatch({type:FETCH_ALL, payload: data});
+        dispatch({type:"REC", payload: data});
 
     } catch (error) {
         console.log(error.message);
